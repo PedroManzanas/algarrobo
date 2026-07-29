@@ -1,9 +1,11 @@
 package com.desarrollo.algarrobo.service;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.desarrollo.algarrobo.entity.Cliente;
 import com.desarrollo.algarrobo.repository.ClienteRepository;
-import org.springframework.stereotype.Service;
-import java.util.List;
 
 @Service
 public class ClienteService {
