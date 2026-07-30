@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.desarrollo.algarrobo.entity.Cliente;
 import com.desarrollo.algarrobo.service.ClienteService;
 
+
 @Controller
 public class ClienteController {
   
@@ -29,14 +30,13 @@ public class ClienteController {
     public String listarClientes(Model model){
 
         model.addAttribute("clientes", clienteService.listarClientes());
-        model.addAttribute("clienteEditar", new Cliente());
+        model.addAttribute("cliente", new Cliente());
 
         return "clientes/lista";
     }
 
-     @GetMapping("/clientes/nuevo") 
+    @GetMapping("/clientes/nuevo") 
     public String nuevoCliente(Model model){
-
         model.addAttribute("cliente", new Cliente());
         return "clientes/formulario";
     }
@@ -66,5 +66,16 @@ public class ClienteController {
 
         return "clientes/formulario";
     }
+
+    @GetMapping("/clientes/eliminar/{id}")
+    public String eliminarCliente(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        
+        clienteService.eliminarCliente(id);
+        redirectAttributes.addFlashAttribute("mensaje", "Cliente elminado Correctamente");
+
+        return "redirect:/clientes";
+    }
+    
+
 
 }

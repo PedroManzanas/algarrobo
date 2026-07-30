@@ -59,9 +59,9 @@
                         <td th:text="${cliente.direccion}"></td>
 
                         <td>
-                            <a th:href="@{/clientes/editar/{id}(id=${cliente.id})}">
+                            <a th:href="@{/clientes/editar/{id}(id=${cliente.id})}" class="btn btn-secondary">
                                 Editar</a>
-                            <a th:href="@{/clientes/eliminar/{id}(id=${cliente.id})}"
+                            <a th:href="@{/clientes/eliminar/{id}(id=${cliente.id})}" class="btn btn-danger"
                                   onclick="return confirm('¿Está seguro de que desea eliminar este cliente?');" >
                                 Eliminar</a>
                         </td>
@@ -93,7 +93,7 @@
             <!-- Modal Cuerpo-->
                             <div class="modal-body">
                                 
-                                <form th:action="@{/clientes}" th:object="${clienteEditar}" method="post">
+                                <form th:action="@{/clientes}" th:object="${cliente}" method="post">
                               
                                 <imput type="hidden" th:field="*{id}">
 
