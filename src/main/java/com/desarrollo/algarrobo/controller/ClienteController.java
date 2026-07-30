@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.desarrollo.algarrobo.entity.Cliente;
@@ -27,10 +28,15 @@ public class ClienteController {
     }
 
     @GetMapping("/clientes")
-    public String listarClientes(Model model){
+    public String listarClientes(@RequestParam(required = false) String nombre, Model model){
 
+        if (nombre != null && !nombre.isBlank()){
+            model.addAttribute("clientes", clienteService.buscarPorNombre(nombre));
+        }
+        else{
         model.addAttribute("clientes", clienteService.listarClientes());
-        model.addAttribute("cliente", new Cliente());
+        }
+        model.addAttribute("nombre", nombre);
 
         return "clientes/lista";
     }

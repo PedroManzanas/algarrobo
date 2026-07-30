@@ -33,4 +33,9 @@ public class ClienteService {
             clienteRepository.delete(cliente);
         }
     }
+
+    public List<Cliente> buscarPorNombre(String nombre){
+        return clienteRepository.findByNombreContainingIgnoreCase(nombre);
+    }
+
 }
