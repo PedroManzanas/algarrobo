@@ -38,7 +38,8 @@
              Nuevo Cliente
             </button>
 
-             
+            <div th:if="${mensaje}" class="alert alert-success" th:text="${mensaje}"> </div>
+
             <table>
                 <thead>
                     <tr>
@@ -58,13 +59,19 @@
                         <td th:text="${cliente.direccion}"></td>
 
                         <td>
-                            <button>Editar</button>
-                            <button>Eliminar</button>
+                            <a th:href="@{/clientes/editar/{id}(id=${cliente.id})}">
+                                Editar</a>
+                            <a th:href="@{/clientes/eliminar/{id}(id=${cliente.id})}"
+                                  onclick="return confirm('¿Está seguro de que desea eliminar este cliente?');" >
+                                Eliminar</a>
                         </td>
 
                     </tr>
                 </tbody>
             </table>
+
+
+            <!--Modal-->
 
             <div class="modal fade" id="clienteModal" tabindex="-1">
                 <div class="modal-dialog">
@@ -79,40 +86,46 @@
 
                         </div>
 
-                        <form th:action="@{/clientes}" method="post">
+                       
 
+
+
+            <!-- Modal Cuerpo-->
                             <div class="modal-body">
+                                
+                                <form th:action="@{/clientes}" th:object="${clienteEditar}" method="post">
+                              
+                                <imput type="hidden" th:field="*{id}">
+
 
                                 <div class="mb-3">
                                     <label class="form-label">
                                         Nombre
                                     </label>
-                                    <input class="form-control" name="nombre" required>
+                                    <input class="form-control" th:field="*{nombre}" required>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">
-                                        Apellido
-                                    </label>
-                                    <input class="form-control" name="apellido" required>
+                                    <label class="form-label"> Apellido </label>
+                                    <input class="form-control" th:field="*{apellido}" required>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">
-                                        Teléfono
-                                    </label>
-                                    <input class="form-control" name="telefono" required>
+                                    <label class="form-label"> Teléfono </label>
+                                    <input class="form-control" th:field="*{telefono}" required>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">
-                                        Dirección
-                                    </label>
-                                    <input class="form-control" name="direccion">
+                                    <label class="form-label"> Dirección </label>
+                                    <input class="form-control" th:field="*{direccion}" required>
                                 </div>
                             </div>
 
                             <div class="modal-footer">
+
+                                <button class="btn btn-secondary" data-bs-dismiss="modal" type="reset">
+                                    Limpiar
+                                </button>
 
                                 <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">
                                     Cancelar
