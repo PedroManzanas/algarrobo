@@ -16,9 +16,6 @@ import com.desarrollo.algarrobo.service.ClienteService;
 
 @Controller
 public class ClienteController {
-  
-    // por si acaso hago el autowired si termino agregando mas constructores
-    //@Autowired
 
     private final ClienteService clienteService;
 

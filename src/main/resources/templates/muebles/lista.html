@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Muebles</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+
+<body>
+
+    <header>
+        <h1>El Algarrobo</h1>
+        <span>Administrador</span>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+
+            <ul>
+
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/clientes">Clientes</a></li>
+            <li><a href="/muebles">Muebles</a></li>
+            <li><a href="/pedidos">Pedidos</a></li>
+            <li><a href="/usuarios">Usuarios</a></li>
+
+            </ul>
+
+        </aside>
+
+
+        <main class="content">
+
+            <h2> Muebles </h2>
+            <a th:href="@{/muebles/nuevo}" class="btn btn-nuevo">
+                Nuevo Mueble
+            </a>
+
+            <div th:if="${mensaje}" class="alert alert-success" th:text="${mensaje}"> </div>
+
+            <form th:action="@{/muebles}" method="get" class="row g-3 mb-3">
+
+                <div class="col-md-6">
+                    <input type="text" name="nombre" th:value="${nombre}" class="form-control" placeholder="Buscar por nombre">
+                </div>
+
+                <div class="col-auto">
+                    <button class="btn btn-primary" type="submit">
+                        Buscar
+                    </button>
+                </div>
+
+                <div class="col-auto">
+                    <a th:href="@{/muebles}" class="btn btn-secondary">
+                        Mostrar todos
+                    </a>
+                </div>
+
+            </form>
+
+
+
+            <table>
+
+                <thead class="tabla-muebles">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Categoria</th>
+                        <th>Material</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="mueble : ${muebles}">
+                        <td th:text="${mueble.id}"></td>
+                        <td th:text="${mueble.nombre}"></td>
+                        <td th:text="${mueble.categoria}"></td>
+                        <td th:text="${mueble.material}"></td>
+                        <td th:text="'$' +${mueble.precio}"></td>
+
+                        <td>
+                            <a th:href="@{/muebles/editar/{id}(id=${mueble.id})}" class="btn btn-secondary">
+                                Editar</a>
+                            <a th:href="@{/muebles/eliminar/{id}(id=${mueble.id})}" class="btn btn-danger"
+                                  onclick="return confirm('¿Está seguro de que desea eliminar este mueble?');" >
+                                Eliminar</a>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </main>
+
+    </div>
+
+</body>
+</html>

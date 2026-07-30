@@ -30,4 +30,7 @@ public class MuebleService {
     public void eliminarMueble(Long id) {
         muebleRepository.deleteById(id);
     }
+      public List<Mueble> buscarPorNombre(String nombre){
+        return muebleRepository.findByNombreContainingIgnoreCase(nombre);
+    }
 }

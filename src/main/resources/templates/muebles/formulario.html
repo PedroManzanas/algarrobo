@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Muebles</title>
+    <link rel="stylesheet" th:href="@{/css/forms.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestión de Muebles</h1>
+        
+        <form method="post" th:action="@{/muebles}" th:object="${mueble}">
+            
+            <input type="hidden" th:field="*{id}">
+
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" th:field="*{nombre}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="categoria">Categoria:</label>
+                <select class="form-select" th:field="*{categoria}" required>
+
+                    <option value="">Seleccione una categoría</option>
+                        <option value="Mesa">Mesa</option>   
+                        <option value="Silla">Silla</option>   
+                        <option value="Placard">Placard</option>    
+                        <option value="Apurturas">Aperturas</option>    
+                        <option value="Estantería">Estantería</option>
+                        <option value="Biblioteca">Biblioteca</option>
+                        <option value="Escritorio">Escritorio</option>
+                        <option value="Mascotas">Mascotas</option>
+                        <option value="Otro">Otro</option>
+
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="material">Material:</label>
+                <select class="form-select" th:field="*{material}" required>
+
+                    <option value="">Seleccione un material</option>
+                        <option value="Roble">Roble</option>
+                        <option value="Pino">Pino</option>
+                        <option value="Madera Maciza">Madera Maciza</option>
+                        <option value="Porcelánico">Porcelánico</option>
+                        <option value="Durolac">Durolac</option>
+                        <option value="Vidrio">Vidrio</option>
+                        <option value="Melamina">Melamina</option>
+                        <option value="MDF lacado">MDF lacado</option>
+                        <option value="Fenolico">Fenólico</option>
+                        <option value="OSB">OSB</option>
+                        <option value="Hierro y madera">Hierro y madera</option>
+                        <option value="Alumnio">Aluminio</option>
+                        <option value="PVC">PVC</option>
+                        <option value="Otro">Otro</option>
+
+                </select>
+            </div>
+
+             <div class="form-group">
+                <label for="precio">Precio:</label>
+                <input type="number" step="0.01" class="form-control" th:field="*{precio}" required>
+            </div>        
+
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <textarea class="form-control" rows="4" th:field="*{descripcion}">
+                </textarea>
+                
+            </div>        
+            
+            <button class="btn btn-success" th:text="${mueble.id == null}
+            ? 'Guardar'
+            : 'Actualizar'">
+            </button> 
+            
+            <button type="reset" class="btn-secondary">Limpiar Formulario</button>
+
+            <a th:href="@{/muebles}" class="btn-secondary"> 
+             Volver
+            </a>
+        </form>     
+    </div>
+</body>
+</html>

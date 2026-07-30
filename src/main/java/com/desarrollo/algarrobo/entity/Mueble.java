@@ -1,7 +1,5 @@
 package com.desarrollo.algarrobo.entity;
 
-import java.math.BigDecimal;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,20 +18,27 @@ public class Mueble {
     @Column(nullable = false)
     private String nombre;
 
-    @Column(length = 500)
-    private String descripcion;
+    @Column(nullable = false)
+    private String categoria;
 
     @Column(nullable = false)
-    private BigDecimal precioBase;
+    private String material;
+
+    @Column(nullable = false)
+    private Double precio;
 
     @Column(length = 500)
-    private String caracteristicas;
+    private String descripcion;
 
     public Mueble() {
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -44,27 +49,35 @@ public class Mueble {
         this.nombre = nombre;
     }
 
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
+
     public String getDescripcion() {
         return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public BigDecimal getPrecioBase() {
-        return precioBase;
-    }
-
-    public void setPrecioBase(BigDecimal precioBase) {
-        this.precioBase = precioBase;
-    }
-
-    public String getCaracteristicas() {
-        return caracteristicas;
-    }
-
-    public void setCaracteristicas(String caracteristicas) {
-        this.caracteristicas = caracteristicas;
     }
 }
