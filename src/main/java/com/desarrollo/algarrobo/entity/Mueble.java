@@ -18,10 +18,8 @@ public class Mueble {
     @Column(nullable = false)
     private String nombre;
 
-    @Column(nullable = false)
     private String categoria;
 
-    @Column(nullable = false)
     private String material;
 
     @Column(nullable = false)
@@ -29,6 +27,12 @@ public class Mueble {
 
     @Column(length = 500)
     private String descripcion;
+    private String caracteristicas;
+
+    /* fijar si agreguar luego, siento que es necesario
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos;
+    */
 
     public Mueble() {
     }
@@ -79,5 +83,13 @@ public class Mueble {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getCaracteristicas() {
+        return caracteristicas;
+    }
+
+    public void setCaracteristicas(String caracteristicas) {
+        this.caracteristicas = caracteristicas;
     }
 }

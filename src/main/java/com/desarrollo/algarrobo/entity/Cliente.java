@@ -18,14 +18,17 @@ public class Cliente {
     @Column(nullable = false)
     private String nombre;
 
-    @Column(nullable = false)
     private String apellido;
+
+    private String direccion;
 
     @Column(nullable = false, unique = true)
     private String telefono;
 
-    private String direccion;
-
+    /* fijar si agreguar luego, siento que es necesario
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos;
+    */
     public Cliente() {
     }
 

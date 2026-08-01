@@ -27,6 +27,8 @@ public class ClienteController {
     @GetMapping("/clientes")
     public String listarClientes(@RequestParam(required = false) String nombre, Model model){
 
+    
+
         if (nombre != null && !nombre.isBlank()){
             model.addAttribute("clientes", clienteService.buscarPorNombre(nombre));
         }
@@ -41,6 +43,7 @@ public class ClienteController {
     @GetMapping("/clientes/nuevo") 
     public String nuevoCliente(Model model){
         model.addAttribute("cliente", new Cliente());
+        
         return "clientes/formulario";
     }
   

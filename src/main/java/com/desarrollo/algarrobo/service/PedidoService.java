@@ -1,10 +1,11 @@
 package com.desarrollo.algarrobo.service;
 
-import com.desarrollo.algarrobo.entity.Pedido;
-import com.desarrollo.algarrobo.repository.PedidoRepository;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.desarrollo.algarrobo.entity.Pedido;
+import com.desarrollo.algarrobo.repository.PedidoRepository;
 
 @Service
 public class PedidoService {
@@ -30,4 +31,9 @@ public class PedidoService {
     public void eliminarPedido(Long id) {
         pedidoRepository.deleteById(id);
     }
+
+    public List<Pedido> buscarPorNombreCliente(String texto) {
+    return pedidoRepository.findByClienteNombreContainingIgnoreCaseOrClienteApellidoContainingIgnoreCase(texto, texto);
+    }
+
 }

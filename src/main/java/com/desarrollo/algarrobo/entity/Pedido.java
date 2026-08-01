@@ -1,7 +1,19 @@
 package com.desarrollo.algarrobo.entity;
 
-import jakarta.persistence.*;
 import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "pedidos")
@@ -22,10 +34,11 @@ public class Pedido {
     @Column(nullable = false)
     private Integer cantidad;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(nullable = false)
     private LocalDate fechaSolicitud;
-
-    @Column(nullable = false)
+    
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate fechaEntregaEstimada;
 
     @Column(nullable = false)
@@ -35,11 +48,18 @@ public class Pedido {
     @Column(nullable = false)
     private EstadoPedido estado;
 
+    @Column(nullable = false)
+    private Double precioFinal;
+
     public Pedido() {
     }
 
     public Long getId() {
         return id;
+    }
+    
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Cliente getCliente() {
@@ -96,5 +116,13 @@ public class Pedido {
 
     public void setEstado(EstadoPedido estado) {
         this.estado = estado;
+    }
+
+    public Double getPrecioFinal() {
+        return precioFinal;
+    }
+
+    public void setPrecioFinal(Double precioFinal) {
+        this.precioFinal = precioFinal;
     }
 }
