@@ -39,6 +39,7 @@
             </a>
 
             <div th:if="${mensaje}" class="alert alert-success" th:text="${mensaje}"> </div>
+            <div th:if="${error}" class="alert alert-danger" th:text="${error}"> </div>
 
             <form th:action="@{/clientes}" method="get" class="row g-3 mb-3">
 

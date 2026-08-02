@@ -39,6 +39,8 @@
             </a>
 
             <div th:if="${mensaje}" class="alert alert-success" th:text="${mensaje}"> </div>
+            <!-- Por si le agrego un try catch 
+            <div th:if="${error}" class="alert alert-danger" th:text="${error}"> </div> -->
 
             <form th:action="@{/pedidos}" method="get" class="row g-3 mb-3">
 
@@ -113,6 +115,7 @@
                 </tbody>
             </table>
 
+           
 
         </main>
 

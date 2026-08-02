@@ -1,10 +1,11 @@
 package com.desarrollo.algarrobo.service;
 
-import com.desarrollo.algarrobo.entity.Usuario;
-import com.desarrollo.algarrobo.repository.UsuarioRepository;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.desarrollo.algarrobo.entity.Usuario;
+import com.desarrollo.algarrobo.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
@@ -29,5 +30,9 @@ public class UsuarioService {
 
     public void eliminarUsuario(Long id) {
         usuarioRepository.deleteById(id);
+    }
+    
+    public List<Usuario> buscarPorNombre(String texto){
+        return usuarioRepository.findByNombreContainingIgnoreCaseOrApellidoContainingIgnoreCase(texto, texto);
     }
 }

@@ -1,6 +1,7 @@
 package com.desarrollo.algarrobo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -76,8 +77,12 @@ public class ClienteController {
     @GetMapping("/clientes/eliminar/{id}")
     public String eliminarCliente(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         
-        clienteService.eliminarCliente(id);
-        redirectAttributes.addFlashAttribute("mensaje", "Cliente elminado Correctamente");
+        try {
+            clienteService.eliminarCliente(id);
+            redirectAttributes.addFlashAttribute("mensaje", "Cliente eliminado correctamente");
+        } catch (DataIntegrityViolationException e) {
+            redirectAttributes.addFlashAttribute("error", "No se puede eliminar el cliente porque tiene pedidos asociados.");
+        }
 
         return "redirect:/clientes";
     }

@@ -1,6 +1,7 @@
 package com.desarrollo.algarrobo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -75,8 +76,12 @@ public class MuebleController {
     @GetMapping("/muebles/eliminar/{id}")
     public String eliminarMueble(@PathVariable Long id, RedirectAttributes redirectAttributes) {
 
-        muebleService.eliminarMueble(id);
-        redirectAttributes.addFlashAttribute("mensaje", "Mueble eliminado correctamente.");
+        try {
+            muebleService.eliminarMueble(id);
+            redirectAttributes.addFlashAttribute("mensaje", "Mueble eliminado correctamente.");
+        } catch (DataIntegrityViolationException e) {
+            redirectAttributes.addFlashAttribute("error", "No se puede eliminar el mueble porque tiene pedidos asociados.");
+        }
 
         return "redirect:/muebles";
     }
