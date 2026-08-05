@@ -91,6 +91,10 @@
                         <td th:text="'$' + ${#numbers.formatDecimal(mueble.precio, 1, 2)}"></td>
                      
                         <td>
+                            <a th:href="@{/muebles/{id}(id=${mueble.id})}" class="btn btn-secondary">
+                                Ver detalle
+                            </a>
+                            
                             <span sec:authorize="hasRole('ADMIN')">
                                 <a th:href="@{/muebles/editar/{id}(id=${mueble.id})}" class="btn btn-secondary">
                                     Editar</a>

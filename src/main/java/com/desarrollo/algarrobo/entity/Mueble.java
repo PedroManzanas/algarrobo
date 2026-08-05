@@ -29,11 +29,6 @@ public class Mueble {
     private String descripcion;
     private String caracteristicas;
 
-    /* fijar si agreguar luego, siento que es necesario
-    @OneToMany(mappedBy = "cliente")
-    private List<Pedido> pedidos;
-    */
-
     public Mueble() {
     }
 

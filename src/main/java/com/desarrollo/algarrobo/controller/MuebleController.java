@@ -45,6 +45,13 @@ public class MuebleController {
         return "muebles/formulario";
     }
 
+    @GetMapping("/muebles/{id}")
+    public String verDetalle(@PathVariable Long id, Model model) {
+        Mueble mueble = muebleService.buscarPorId(id);
+        model.addAttribute("mueble", mueble);
+    return "muebles/detalle";
+    }
+
     @PostMapping("/muebles")
     public String guardarMueble(@ModelAttribute Mueble mueble, RedirectAttributes redirectAttributes) {
 
