@@ -73,7 +73,7 @@ public class MuebleController {
         return "muebles/formulario";
     }
 
-    @GetMapping("/muebles/eliminar/{id}")
+    @PostMapping("/muebles/eliminar/{id}")
     public String eliminarMueble(@PathVariable Long id, RedirectAttributes redirectAttributes) {
 
         try {

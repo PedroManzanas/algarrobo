@@ -74,7 +74,7 @@ public class ClienteController {
         return "clientes/formulario";
     }
 
-    @GetMapping("/clientes/eliminar/{id}")
+    @PostMapping("/clientes/eliminar/{id}")
     public String eliminarCliente(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         
         try {

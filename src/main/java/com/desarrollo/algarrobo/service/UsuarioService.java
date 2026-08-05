@@ -2,6 +2,7 @@ package com.desarrollo.algarrobo.service;
 
 import java.util.List;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.desarrollo.algarrobo.entity.Usuario;
@@ -11,9 +12,11 @@ import com.desarrollo.algarrobo.repository.UsuarioRepository;
 public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UsuarioService(UsuarioRepository usuarioRepository) {
+    public UsuarioService(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
         this.usuarioRepository = usuarioRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public List<Usuario> listarUsuarios() {
@@ -21,6 +24,15 @@ public class UsuarioService {
     }
 
     public Usuario guardarUsuario(Usuario usuario) {
+        if (usuario.getId() != null) {
+            if (usuario.getPassword() != null && !usuario.getPassword().isBlank()) {
+                usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+            }
+        } else {
+            if (usuario.getPassword() != null && !usuario.getPassword().isBlank()) {
+                usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+            }
+        }
         return usuarioRepository.save(usuario);
     }
 

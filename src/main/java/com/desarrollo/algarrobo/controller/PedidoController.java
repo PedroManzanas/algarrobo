@@ -69,9 +69,6 @@ public PedidoController(PedidoService pedidoService, ClienteService clienteServi
         else{
             redirectAttributes.addFlashAttribute("mensaje", "Pedido actualizado correctamente");
         }
-    System.out.println("-------------------------------AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA--------");
-    System.out.println(pedido.getFechaSolicitud());
-    System.out.println(pedido.getFechaEntregaEstimada());
     return "redirect:/pedidos";
     }
 
@@ -85,18 +82,15 @@ public PedidoController(PedidoService pedidoService, ClienteService clienteServi
         model.addAttribute("clientes", clienteService.listarClientes());
         model.addAttribute("muebles", muebleService.listarMuebles());
         model.addAttribute("estados", EstadoPedido.values());
-        System.out.println("--------------------------------------------------------------------------");
-        System.out.println("Fecha solicitud: " + pedido.getFechaSolicitud());
-        System.out.println("Fecha entrega: " + pedido.getFechaEntregaEstimada());
 
         return "pedidos/formulario";
     }
 
-    @GetMapping("/pedidos/eliminar/{id}")
+    @PostMapping("/pedidos/eliminar/{id}")
     public String eliminarPedido(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         
         pedidoService.eliminarPedido(id);
-        redirectAttributes.addFlashAttribute("mensaje", "Pedido elminado correctamente");
+        redirectAttributes.addFlashAttribute("mensaje", "Pedido eliminado correctamente");
 
         return "redirect:/pedidos";
     }

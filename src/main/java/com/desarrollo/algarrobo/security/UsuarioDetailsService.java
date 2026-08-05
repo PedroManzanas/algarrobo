@@ -1,0 +1,33 @@
+package com.desarrollo.algarrobo.security;
+ 
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+ 
+import com.desarrollo.algarrobo.entity.Usuario;
+import com.desarrollo.algarrobo.repository.UsuarioRepository;
+ 
+@Service
+public class UsuarioDetailsService implements UserDetailsService {
+ 
+    private final UsuarioRepository usuarioRepository;
+ 
+    public UsuarioDetailsService(UsuarioRepository usuarioRepository) {
+        this.usuarioRepository = usuarioRepository;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+        Usuario usuario = usuarioRepository.findByUsername(username) .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado: " + username));
+
+        System.out.println(">>> Rol leído de la base para " + username + ": " + usuario.getRol());
+        return User.builder()
+                .username(usuario.getUsername())
+                .password(usuario.getPassword())
+                .roles(usuario.getRol().name())
+        .build();
+    }
+}

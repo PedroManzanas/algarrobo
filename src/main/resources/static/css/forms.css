@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --madera-dark:      #2B2019;
+    --madera-primary:   #7C4A2D;
+    --madera-primary-h: #673D24;
+    --papel:          #FAF7F2;
+    --papel2:         #fff6ee;
+    --card:           #FFFFFF;
+    --border:         #E4DCD1;
+    --border-focus:   #B98A5E;
+    --text:           #2B2019;
+    --text-muted:     #6E6259;
+    --terracota:     #B3492D;
+
+}
+
+body {
+    background-color: var(--papel);
+    font-family: 'Inter', sans-serif;
+}
+
+.form-container {
+    max-width: 620px;
+    margin: 40px auto;
+    background-color: var(--card);
+    border-radius: 6px;
+    border-left: 4px solid var(--madera-primary);
+    box-shadow: 0 1px 3px rgba(43, 32, 25, 0.08), 0 8px 24px rgba(43, 32, 25, 0.06);
+    padding: 32px 36px 30px;
+}
+
+.form-container h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--madera-dark);
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 7px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group input[type="email"],
+.form-group input[type="password"], 
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    color: var(--text);
+    background-color: var(--papel2);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    background-color: var(--card);
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(124, 74, 45, 0.12);
+}
+
+.form-group select {
+    cursor: pointer;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 20px;
+    padding: 10px 12px;
+    background-color: var(--papel2);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+
+.form-check input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--madera-primary);
+    cursor: pointer;
+}
+
+.form-check label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin: 0;
+    cursor: pointer;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.15s ease, transform 0.05s ease;
+}
+
+.btn-primary {
+    background-color: var(--terracota);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--madera-primary-h);
+}
+
+.btn-secondary {
+    padding: 10px 20px;
+    background-color: transparent;
+    color: var(--terracota);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+ 
+.btn-secondary:hover {
+    background-color: #FBF1EE;
+    border-color: var(--terracota);
+}
+
+.error-message {
+    display: block;
+    color: var(--terracota);
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    margin-top: 5px;
+}

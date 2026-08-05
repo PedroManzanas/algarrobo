@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Muebles</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 
@@ -12,7 +12,12 @@
 
     <header>
         <h1>El Algarrobo</h1>
-        <span>Administrador</span>
+        <div style="display:flex; align-items:center; gap:16px;">
+            <span sec:authentication="name">Usuario</span>
+            <form th:action="@{/logout}" method="post" style="display:inline;">
+                <button type="submit" class="btn btn-ghost" style="color:#ffffff;">Cerrar sesión</button>
+            </form>
+        </div>
     </header>
 
     <div class="container">
@@ -24,7 +29,7 @@
             <li><a href="/clientes">Clientes</a></li>
             <li><a href="/muebles">Muebles</a></li>
             <li><a href="/pedidos">Pedidos</a></li>
-            <li><a href="/usuarios">Usuarios</a></li>
+            <li sec:authorize="hasRole('ADMIN')"><a href="/usuarios">Usuarios</a></li>
 
             </ul>
 
@@ -85,9 +90,12 @@
                         <td>
                             <a th:href="@{/muebles/editar/{id}(id=${mueble.id})}" class="btn btn-secondary">
                                 Editar</a>
-                            <a th:href="@{/muebles/eliminar/{id}(id=${mueble.id})}" class="btn btn-danger"
+                            <form th:action="@{/muebles/eliminar/{id}(id=${mueble.id})}" method="post"
                                   onclick="return confirm('¿Está seguro de que desea eliminar este mueble?');" >
-                                Eliminar</a>
+                            <button type="submit" class="btn btn-danger">
+                                Eliminar
+                            </button>
+                            </form>
                         </td>
 
                     </tr>
