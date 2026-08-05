@@ -34,4 +34,8 @@ public class MuebleService {
       public List<Mueble> buscarPorNombre(String nombre){
         return muebleRepository.findByNombreContainingIgnoreCase(nombre);
     }
+
+     public long contarMuebles() {
+        return muebleRepository.count();
+    }
 }

@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap');
 
 :root {
-    --wood-dark:      #2B2019;
-    --wood-primary:   #7C4A2D;
-    --wood-primary-h: #673D24;
-    --wood-sidebar:   #4A3226;
+    --madera-dark:      #2B2019;
+    --madera-primary:   #7C4A2D;
+    --madera-primary-h: #673D24;
+    --madera-sidebar:   #4A3226;
     --papel:          #FAF7F2;
     --papel2:         #FDF9F5;
     --card:           #FFFFFF;
@@ -12,7 +12,6 @@
     --border-focus:   #B98A5E;
     --text:           #2B2019;
     --text-muted:     #6E6259;
-    --sage:           #6B8E5A;
     --terracota:     #B3492D;
 }
 
@@ -31,7 +30,7 @@ body {
 /* ---------- Header ---------- */
 
 header {
-    background: var(--wood-dark);
+    background: var(--madera-dark);
     color: #fff;
     padding: 18px 32px;
     display: flex;
@@ -49,7 +48,7 @@ header {
 
 /* ---------- Layout ---------- */
 
-.container {
+.layout-container {
     display: flex;
     min-height: calc(100vh - 66px);
 }
@@ -58,7 +57,7 @@ header {
 
 .sidebar {
     width: 230px;
-    background: var(--wood-sidebar);
+    background: var(--madera-sidebar);
     padding: 24px 0;
 }
 
@@ -105,7 +104,7 @@ header {
     font-family: 'Fraunces', serif;
     font-weight: 600;
     font-size: 28px;
-    color: var(--wood-dark);
+    color: var(--madera-dark);
     margin-bottom: 8px;
     letter-spacing: -0.01em;
 }
@@ -128,7 +127,7 @@ header {
     background: var(--card);
     padding: 26px 24px;
     border-radius: 8px;
-    border-top: 3px solid var(--wood-primary);
+    border-top: 3px solid var(--madera-primary);
     box-shadow: 0 1px 3px rgba(43, 32, 25, 0.06), 0 4px 14px rgba(43, 32, 25, 0.05);
     text-align: left;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -143,7 +142,7 @@ header {
     font-family: 'Fraunces', serif;
     font-weight: 600;
     font-size: 18px;
-    color: var(--wood-dark);
+    color: var(--madera-dark);
     margin-bottom: 8px;
 }
 
@@ -213,18 +212,18 @@ tbody tr:hover {
 .btn-primary,
 .btn-nuevo, 
 .btn-guardar {
-    background: var(--wood-primary);
+    background: var(--madera-primary);
     color: #fff;
     margin-bottom: 8px;
 }
 .btn {
-    background: var(--wood-primary);
+    background: var(--madera-primary);
     color: #fff;
 }
 
 .btn-primary:hover,
 .btn:hover {
-    background: var(--wood-primary-h);
+    background: var(--madera-primary-h);
 }
 
 .btn-secondary {
@@ -237,4 +236,16 @@ tbody tr:hover {
     background: #FBF1EE;
     color: var(--terracota);
     border-color: var(--terracota);
+}
+
+.footer{
+    margin-top:40px;
+    padding:15px;
+
+    text-align:bottom;
+
+    background:#6b4226;
+    color:white;
+
+    font-size:14px;
 }

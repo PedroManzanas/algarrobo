@@ -8,11 +8,10 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="form-container">
         <h1>Gestión de Usuarios</h1>
         
         <form method="post" th:action="@{/usuarios}" th:object="${usuario}">
-            <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
             <input type="hidden" th:field="*{id}">
 
             <div class="form-group">

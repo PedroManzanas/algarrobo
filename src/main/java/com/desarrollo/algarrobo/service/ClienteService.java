@@ -38,4 +38,7 @@ public class ClienteService {
         return clienteRepository.findByNombreContainingIgnoreCase(nombre);
     }
 
+    public long contarClientes() {
+        return clienteRepository.count();
+    }
 }

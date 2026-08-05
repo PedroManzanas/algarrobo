@@ -47,4 +47,8 @@ public class UsuarioService {
     public List<Usuario> buscarPorNombre(String texto){
         return usuarioRepository.findByNombreContainingIgnoreCaseOrApellidoContainingIgnoreCase(texto, texto);
     }
+
+    public long contarUsuarios() {
+        return usuarioRepository.count();
+    }
 }

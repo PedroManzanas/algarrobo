@@ -20,7 +20,7 @@
         </div>
     </header>
 
-    <div class="container">
+    <div class="layout-container">
         <aside class="sidebar">
 
             <ul>
@@ -39,9 +39,11 @@
         <main class="content">
 
             <h2> Muebles </h2>
+            <span sec:authorize="hasRole('ADMIN')">
             <a th:href="@{/muebles/nuevo}" class="btn btn-nuevo">
                 Nuevo Mueble
             </a>
+            </span>
 
             <div th:if="${mensaje}" class="alert alert-success" th:text="${mensaje}"> </div>
             <div th:if="${error}" class="alert alert-danger" th:text="${error}"> </div>
@@ -77,6 +79,7 @@
                         <th>Categoria</th>
                         <th>Material</th>
                         <th>Precio</th>
+                        <th sec:authorize="hasRole('ADMIN')">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -85,24 +88,29 @@
                         <td th:text="${mueble.nombre}"></td>
                         <td th:text="${mueble.categoria}"></td>
                         <td th:text="${mueble.material}"></td>
-                        <td th:text="'$' +${mueble.precio}"></td>
-
+                        <td th:text="'$' + ${#numbers.formatDecimal(mueble.precio, 1, 2)}"></td>
+                     
                         <td>
-                            <a th:href="@{/muebles/editar/{id}(id=${mueble.id})}" class="btn btn-secondary">
-                                Editar</a>
-                            <form th:action="@{/muebles/eliminar/{id}(id=${mueble.id})}" method="post"
-                                  onclick="return confirm('¿Está seguro de que desea eliminar este mueble?');" >
-                            <button type="submit" class="btn btn-danger">
-                                Eliminar
-                            </button>
-                            </form>
+                            <span sec:authorize="hasRole('ADMIN')">
+                                <a th:href="@{/muebles/editar/{id}(id=${mueble.id})}" class="btn btn-secondary">
+                                    Editar</a>
+                                    
+                                <form th:action="@{/muebles/eliminar/{id}(id=${mueble.id})}" method="post"
+                                      onclick="return confirm('¿Está seguro de que desea eliminar este mueble?');" >
+                                <button type="submit" class="btn btn-danger">
+                                    Eliminar
+                                </button>
+                                </form>
+                            </span>
                         </td>
 
                     </tr>
                 </tbody>
             </table>
 
-
+                <footer>
+                <p> 2026 Carpinteria Algarrobo. Alvaro Sanchez Romano. Email alvarosanchezromano.31@gmail.com. DNI 46.292.594</p>
+                </footer>
         </main>
 
     </div>
